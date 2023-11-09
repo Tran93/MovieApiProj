@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie API Project</title>
+    <link rel="stylesheet" href="./assets/style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header class="colored-header">
+        <h1>SAMPLE TITLE</h1>
+    </header>
+    <section>
+        <h2 class="main-heading">Search for a city:</h2>
+        <form id="search-form" action="/search" method="GET">
+          <input id="city-input" type="text" name="city" placeholder="Enter a city">
+          <button type="submit">Search</button>
+        </form>
+    </section>
+    <section class="container">
+        <form action="/search" method="GET">
+            <input type="text" id="searchBar" name="movie-search" placeholder="Search for a movie">
+            <button type="submit">Search</button>
+        </form>
+    </section>
+</body>
+</html>
