@@ -6,6 +6,8 @@ const options = {
   }
 };
 
+//-------- Use of the API --------//
+
 //overview
 //original_language
 //origin_title
@@ -16,6 +18,7 @@ const options = {
 //vote_average
 //vote_count
 
+// Create a function that can be easily modified to fetch different movies.
 async function fetchUpcomingMovies() {
   try {
     const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options);
@@ -37,6 +40,8 @@ async function fetchUpcomingMovies() {
         \nVote Average | ${movie.vote_average}
         \nReview | ${movie.overview}`);
     });
+// TODO: Display the next set of movies from the next page.
+
   } catch (err) {
     console.error(err);
   }
