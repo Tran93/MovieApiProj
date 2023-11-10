@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie API Project</title>
-    <link rel="stylesheet" href="./assets/style.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header class="colored-header">
         <h1>SAMPLE TITLE</h1>
     </header>
-    <section>
+    
+    <nav>
         <h2 class="main-heading">Search for a city:</h2>
-        <form id="search-form" action="/search" method="GET">
-          <input id="city-input" type="text" name="city" placeholder="Enter a city">
-          <button type="submit">Search</button>
+        <form id="city-search-form" action="/search-city" method="GET">
+            <input id="city-input" type="text" name="city" placeholder="Enter a city">
+            <button type="submit">Search</button>
         </form>
-    </section>
+    </nav>
+
     <section class="container">
-        <form action="/search" method="GET">
+        <h2 class="main-heading">Search for a movie:</h2>
+        <form action="/search-movie" method="GET">
             <input type="text" id="searchBar" name="movie-search" placeholder="Search for a movie">
             <button type="submit">Search</button>
         </form>
