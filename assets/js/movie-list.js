@@ -21,7 +21,7 @@ const options = {
 // Create a function that can be easily modified to fetch different movies.
 async function fetchUpcomingMovies() {
   try {
-    const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', options);
+    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
     
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
