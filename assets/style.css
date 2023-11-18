@@ -96,5 +96,11 @@ button {
     height: 25px;
     width: 25px;
   }
-  
-  
+
+/* ------ revolving movie info bar ------ */
+
+#movie-details-container {
+  padding-top: 170px; /* Adjust the padding to make room for the navbar and header */
+  overflow-x: hidden;
+  white-space: wrap; /* Wrap to the next line */
+}
