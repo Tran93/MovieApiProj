@@ -54,12 +54,10 @@ async function displayMovies(movies) {
   
   for (const movie of movies) {
     const movieInfo = `
-      <div>
         <h2>${movie.title}</h2>
         <p>Release Date: ${movie.release_date}</p>
         <p>Popularity: ${movie.popularity}</p>
         <p>Vote Average: ${movie.vote_average}</p>
-      </div>
     `;
 
     // Create a new element for each movie and append it to the container
@@ -67,8 +65,11 @@ async function displayMovies(movies) {
     movieElement.innerHTML = movieInfo;
     movieDetailsContainer.appendChild(movieElement);
 
+    // Automatically scroll down to show the newly added movie
+    movieDetailsContainer.scrollTop = movieDetailsContainer.scrollHeight;
+
     // Add a delay before displaying the next movie (1 minute in this case)
-    await new Promise(resolve => setTimeout(resolve, 60000));
+    await new Promise(resolve => setTimeout(resolve, 10000));
   }
 }
 
