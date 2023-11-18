@@ -6,10 +6,29 @@ body {
     align-items: center;
     margin: 0;
 }
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+nav .slide-link {
+    display: none;
+}
+#city-search-form,
+.searchBar {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#city-input,
+#searchBar {
+    margin-right: 10px;
+    padding: 5px;
+}
 
 .colored-header {
-    background-color: #d8db34;
-    color: #000000;
+    background-color: rgb(72, 157, 255);
+    color: #ffffff;
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -29,6 +48,14 @@ body {
     text-align: center;
     overflow: hidden;
 }
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to the next line if there's not enough space */
+    justify-content: space-between; /* Distribute items evenly with some space around them */
+    margin-left: 70px;
+    margin-right: -40px;
+}
+
 
 .movie-carousel-container {
     position: relative;
@@ -36,7 +63,21 @@ body {
     margin: 20px auto;
     overflow: hidden; 
 }
-
+.product-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line */
+    justify-content: center; /* Center the cards horizontally */
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+.product-card1 {
+    margin-left: 30px;
+    width: 200px;
+    margin-top: 10px;
+}
+.product-card {
+    width: 200px; /* Adjust the width as needed */
+    margin: 10px; /* Adjust the margin as needed */
+}
 #movieCarousel {
     width: 100%; 
     display: flex; 
@@ -45,9 +86,57 @@ body {
 .movie-carousel {
     transition: transform 0.5s ease;
 }
+button {
+    background-color: rgb(79, 158, 248); /* Green color, change it to your desired color */
+    color: white; /* Text color, you can adjust this based on your background color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+#movieModal.open {
+    
+    position: fixed;
+    top: 38%;
+    left: 40px; /* Adjust this value as needed */
+    transform: translate(0, -40%);
+    z-index: 100;
+    max-width: 400px; /* Add this line to limit the width of the modal */
+}
+#modalContent {
+    width: 300px;
+    padding: 20px;
+    /* Add other styles as needed */
 
+    /* Adjust the font size for the text inside the modal */
+    font-size: 16px; /* You can change this value to your desired font size */
+}
 
+#modalTitle {
+    /* Adjust the font size for the modal title */
+    font-size: 30px; /* You can change this value to your desired font size */
+}
 
+#modalOverview {
+    /* Adjust the font size for the modal overview text */
+    font-size: 20px; /* You can change this value to your desired font size */
+}
 
-
+#modalReleaseDate {
+    /* Adjust the font size for the modal release date */
+    font-size: 16px; /* You can change this value to your desired font size */
+}
+  @media only screen and (max-width: 600px) {
+    /* Adjust styles for smaller screens */
+    body {
+      font-size: 14px;
+    }
+  
+    .container {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  
+    /* Add more responsive styles as needed */
+  }
