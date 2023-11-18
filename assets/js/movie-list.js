@@ -18,35 +18,62 @@ const options = {
 //vote_average
 //vote_count
 
-// Create a function that can be easily modified to fetch different movies.
-async function fetchUpcomingMovies() {
+// Create a function that can be easily modified to fetch different movies
+async function fetchAndDisplayMovies() {
+  let page = 1;
+
   try {
-    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    while (true) {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`, options);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const upcomingMovies = data;
+
+      // Display movies one by one
+      await displayMovies(upcomingMovies.results);
+
+      // Check if there is a next page
+      if (upcomingMovies.page < upcomingMovies.total_pages) {
+        page++; // Move to the next page
+      } else {
+        break; // Exit the loop if there are no more pages
+      }
     }
-
-    const data = await response.json();
-    const upcomingMovies = data;
-
-    console.log(upcomingMovies);
-
-    upcomingMovies.results.forEach(movie => {
-      console.log(`
-        \nTitle | ${movie.title}
-        \nRelease Date | ${movie.release_date} 
-        \nPopularity | ${movie.popularity} 
-        \nVote Average | ${movie.vote_average}
-        \nReview | ${movie.overview}`);
-    });
-// TODO: Display the next set of movies from the next page.
-
   } catch (err) {
     console.error(err);
   }
-};
+}
 
-fetchUpcomingMovies();
+// Create a function that displays movies one by one
+async function displayMovies(movies) {
+  const movieDetailsContainer = document.getElementById('movie-details-container');
+  
+  for (const movie of movies) {
+    const movieInfo = `
+        <h2>${movie.title}</h2>
+        <p>Release Date: ${movie.release_date}</p>
+        <p>Popularity: ${movie.popularity}</p>
+        <p>Vote Average: ${movie.vote_average}</p>
+    `;
+
+    // Create a new element for each movie and append it to the container
+    const movieElement = document.createElement('div');
+    movieElement.innerHTML = movieInfo;
+    movieDetailsContainer.appendChild(movieElement);
+
+    // Automatically scroll down to show the newly added movie
+    movieDetailsContainer.scrollTop = movieDetailsContainer.scrollHeight;
+
+    // Add a delay before displaying the next movie (1 minute in this case)
+    await new Promise(resolve => setTimeout(resolve, 10000));
+  }
+}
+
+fetchAndDisplayMovies();
+
 
   
