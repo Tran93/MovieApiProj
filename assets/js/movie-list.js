@@ -20,32 +20,49 @@ const options = {
 
 // Create a function that can be easily modified to fetch different movies.
 async function fetchUpcomingMovies() {
+  let page = 1;
+
   try {
-    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-    
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+    while (true) {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}, `, options);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const upcomingMovies = data;
+
+      console.log(upcomingMovies);
+
+      upcomingMovies.results.forEach(async (movie, index) => {
+        console.log(`
+          \nTitle | ${movie.title}
+          \nRelease Date | ${movie.release_date} 
+          \nPopularity | ${movie.popularity} 
+          \nVote Average | ${movie.vote_average}
+          \nReview | ${movie.overview}`);
+
+          if (index < upcomingMovies.results.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, 300000));
+
+          }
+      });
+
+      // Check if there is a next page
+      if (upcomingMovies.page < upcomingMovies.total_pages) {
+        //Add a delay to prevent hitting the API rate limit
+        await new Promise(resolve => setTimeout(resolve, 300000));
+
+        page++; // Move to the next page
+      } else {
+        break; // Exit the loop if there are no more pages
+      }
     }
-
-    const data = await response.json();
-    const upcomingMovies = data;
-
-    console.log(upcomingMovies);
-
-    upcomingMovies.results.forEach(movie => {
-      console.log(`
-        \nTitle | ${movie.title}
-        \nRelease Date | ${movie.release_date} 
-        \nPopularity | ${movie.popularity} 
-        \nVote Average | ${movie.vote_average}
-        \nReview | ${movie.overview}`);
-    });
-// TODO: Display the next set of movies from the next page.
-
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 fetchUpcomingMovies();
 

@@ -7,6 +7,14 @@ const detailsContainer = document.getElementById('details-container');
 // Event listener for the search button
 searchButton.addEventListener('click', searchMovieById);
 
+function searchMovieById() {
+  // Get the movie ID from the input field
+  const movieId = searchInput.value;
+
+  // Call the searchMovies function, passing the movie ID
+  searchMovies(movieId);
+};
+
 // Function that handles the movie search by ID
 function searchMovies() {
 
