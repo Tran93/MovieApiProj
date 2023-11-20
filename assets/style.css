@@ -14,9 +14,9 @@ body {
     margin: 0;
 }
 
-nav, section.container {
+  section.container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center; 
     margin-top: 20px;
 }
@@ -47,11 +47,14 @@ button {
     border: 1px solid #e6e6e6;
     padding: 1rem;
     margin-bottom: 1.5rem;
+    text-align: center;
+    object-fit: contain;
   }
   
   .product-card-thumbnail {
     display: block;
     position: relative;
+    object-fit: contain;
   }
   
   .product-card-title {
@@ -68,24 +71,27 @@ button {
     display: block;
     font-family: 'Open sans', sans-serif;
     font-size: 0.85rem;
+    white-space: wrap;
+    
+    
   }
   
-  .product-card-price {
+  .product-card-rating {
     color: #3e3e3e;
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 600;
     margin-top: 0.8rem;
+    text-align: left;
   }
   
   .product-card-sale {
     color: #cacaca;
     display: inline-block;
     font-size: 0.85rem;
-    margin-left: 0.3rem;
-    text-decoration: line-through;
+    margin-left: 0.3rem; 
   }
-  
+
   .product-card-colors {
     display: block;
     margin-top: 0.8rem;
@@ -95,7 +101,12 @@ button {
     display: inline-block;
     height: 25px;
     width: 25px;
+    object-fit: contain;
   }
+
+  .material-symbols-outlined {
+    color: red;
+  } 
 
 /* ------ revolving movie info bar ------ */
 
@@ -133,4 +144,10 @@ button {
   display: block;
   margin: 0 auto;
   text-align: center;
+  
+  @media screen and (max-width: 768px) {
+  body {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
