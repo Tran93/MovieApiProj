@@ -32,8 +32,7 @@ fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', option
         <h2>${movie.title}</h2>
         <p>Release Year: ${movie.release_year}</p>
         <p>Director: ${movie.director}</p>
-        <p>Actors: ${movie.actors.join(', ')}</p>
-        <p>Plot: ${movie.plot}</p>
+        
       `;
       detailsContainer.innerHTML = "";
       detailsContainer.appendChild(detailsElement);
