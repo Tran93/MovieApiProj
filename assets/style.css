@@ -111,19 +111,43 @@ button {
 /* ------ revolving movie info bar ------ */
 
 #movie-details-container {
-  padding-top: 200px; /* Adjust the padding to make room for the navbar and header */
+  align-items: flex-start;
+  padding-top: 40%; /* Adjust the padding to make room for the navbar and header */
   overflow-x: hidden;
-  white-space: wrap; /* Wrap to the next line */
+  overflow-y: scroll;
+  flex-wrap: wrap; /* Wrap to the next line */
+  max-width: 50%;
+  display: block;
+  margin-right: auto;
+}
+
+#movie-details-container h2 {
+  font-size: 30px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#movie-details-container div {
+  font-size: 15px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #movie-details-container::-webkit-scrollbar {
   display: none; /* Hide the scrollbar */
 }
 
-@media screen and (max-width: 768px) {
+#movie-details-container img {
+  border: 0;
+  max-width: 40%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  
+  @media screen and (max-width: 768px) {
   body {
     display: flex;
     flex-wrap: wrap;
   }
-  
 }
