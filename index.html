@@ -5,31 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie API Project</title>
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic">
+
 </head>
 <body>
-    <header class="colored-header">
-        <h1>SAMPLE TITLE</h1>
-    </header>
-    
-    <nav>
-        <h2 class="main-heading">Search for a city:</h2>
-        <form id="city-search-form" action="/search-city" method="GET">
-            <input id="city-input" type="text" name="city" placeholder="Enter a city">
-            <button type="submit">Search</button>
-        </form>
-    </nav>
+  <header class="colored-header">
+    <h1>MOPPI MOVIES</h1>
+  </header>
+      <h2 class="main-heading">Search for a city:</h2>
+      <form id="city-search-form" action="/search-city" method="GET">
+          <input id="city-input" type="text" name="city" placeholder="Enter a city">
+          <!-- When the button is clicked display the information to the theaters-container -->
+          <button type="submit" id="search-city-button" onclick="searchCitytheaters()">Search</button>
+      </form>
+
+  <div id="movie-details-container">
+      <!-- Information from the movie revolver goes here -->
+    </div>
+  </div>
+
+  <div id="theaters-container">
+    <!-- Information from the searched city and its theaters goes here -->
+  </div>
+
+      <h2 class="main-heading">Search for a movie:</h2>
+      <div class="searchBar">
+            <input type="text" id="searchBar" name="movie-search" placeholder="Search for a movie">
+            <!-- When the button is clicked display the movies information to the movie-details-container -->
+            <button type="submit" id="search-button" onclick="searchMovies()">Search</button>
+        </div>
+        <div id="results-container"></div>
+        <div id="details-container"></div>
+      <!-- Information from the searched movie goes here -->
+  </div>
 
     <section class="container">
-        <h2 class="main-heading">Search for a movie:</h2>
-        <form action="/search-movie" method="GET">
-            <input type="text" id="searchBar" name="movie-search" placeholder="Search for a movie">
-            <button type="submit">Search</button>
-        </form>
+        <div class="product-card">
+            <div class="product-card-thumbnail">
+              <a href="#"><img src="https://placehold.it/180x180"/></a>
+            </div>
+            <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+            <span class="product-card-desc">Product Description</span>
+            <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
+            <div class="product-card-colors">
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-thumbnail">
+              <a href="#"><img src="https://placehold.it/180x180"/></a>
+            </div>
+            <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+            <span class="product-card-desc">Product Description</span>
+            <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
+            <div class="product-card-colors">
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-thumbnail">
+              <a href="#"><img src="https://placehold.it/180x180"/></a>
+            </div>
+            <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+            <span class="product-card-desc">Product Description</span>
+            <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
+            <div class="product-card-colors">
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card-thumbnail">
+              <a href="#"><img src="https://placehold.it/180x180"/></a>
+            </div>
+            <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+            <span class="product-card-desc">Product Description</span>
+            <span class="product-card-price">$9.99</span><span class="product-card-sale">$12.99</span>
+            <div class="product-card-colors">
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+              <button href="#" class="product-card-color-option"><img src="https://placehold.it/30x30"/></button>
+            </div>
+          </div>
+          
+          
+          
     </section>
     <script src="/assets/js/movie-list.js"></script>
-    <script src="/assets/js/search-city.js"></script>
-    <script src="/assets/js/search-movie.js"></script>
-    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/movie-info.js"></script>
+    <script src="/assets/js/moviesearch.js"></script>
     
 </body>
 </html>
