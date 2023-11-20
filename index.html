@@ -9,26 +9,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
    
 </head>
-
 <body>
   <header class="colored-header">
     <h1>MOPPI MOVIES</h1>
   </header>
-      <h2 class="main-heading">Search for a city:</h2>
-      <form id="city-search-form" action="/search-city" method="GET">
-          <input id="city-input" type="text" name="city" placeholder="Enter a city">
-          <!-- When the button is clicked display the information to the theaters-container -->
-          <button type="submit" id="search-city-button" onclick="searchCitytheaters()">Search</button>
-      </form>
-
+  <h2>Upcoming movie preview</h2>
+  <section class="yt-container"></section>
+    <h2 class="main-heading">Search for a city:</h2>
+    <form id="city-search-form" action="/search-city" method="GET">
+      <input id="city-input" type="text" name="city" placeholder="Enter a city">
+      <!-- When the button is clicked display the information to the theaters-container -->
+      <button type="submit" id="search-city-button" onclick="searchCitytheaters()">Search</button>
+    </form>
+  
   <div id="movie-details-container">
-      <!-- Information from the movie revolver goes here -->
-    </div>
+    <!-- Information from the movie revolver goes here -->
   </div>
+</div>
 
-  <div id="theaters-container">
-    <!-- Information from the searched city and its theaters goes here -->
-  </div>
+<div id="theaters-container">
+  <!-- Information from the searched city and its theaters goes here -->
+</div>
 
       <h2 class="main-heading">Search for a movie:</h2>
       <div class="searchBar">
@@ -124,6 +125,7 @@
     <script src="/assets/js/movie-list.js"></script>
     <script src="/assets/js/movie-info.js"></script>
     <script src="/assets/js/moviesearch.js"></script>
+    <script src="/assets/youtube.js"></script>
     <script src="https://kit.fontawesome.com/e5953a1020.js" crossorigin="anonymous"></script>
     
 </body>
