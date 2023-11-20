@@ -46,18 +46,19 @@ async function fetchAndDisplayMovies() {
   } catch (err) {
     console.error(err);
   }
-}
+};
 
 // Create a function that displays movies one by one
 async function displayMovies(movies) {
   const movieDetailsContainer = document.getElementById('movie-details-container');
   
   for (const movie of movies) {
+
+    const roundedPopularity = Math.round(movie.popularity);
+    const roundedVoteAverage = Math.round(movie.vote_average);
+
     const movieInfo = `
-        <h2>${movie.title}</h2>
-        <p>Release Date: ${movie.release_date}</p>
-        <p>Popularity: ${movie.popularity}</p>
-        <p>Vote Average: ${movie.vote_average}</p>
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} Poster">
     `;
 
     // Create a new element for each movie and append it to the container
@@ -71,9 +72,12 @@ async function displayMovies(movies) {
     // Add a delay before displaying the next movie (1 minute in this case)
     await new Promise(resolve => setTimeout(resolve, 10000));
   }
-}
+};
 
-fetchAndDisplayMovies();
+//wait for the DOM to load
+document.addEventListener('DOMContentLoaded', async () => {
+  await fetchAndDisplayMovies();
+});
 
 
   
