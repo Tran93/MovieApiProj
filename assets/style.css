@@ -1,10 +1,38 @@
 body {
+    
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-section {
+    margin-top: 10px; /* Adjust the margin-top value as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#city-input,
+#searchBar {
+    margin-right: 10px;
+    padding: 10px; /* Adjust the padding value for consistency */
+}
+
+#city-search-button,
+#searchButton {
+    margin-top: 10px; /* Adjust the margin-top value as needed */
+    padding: 10px;
 }
 
 .colored-header {
@@ -16,39 +44,93 @@ body {
     margin: 0;
 }
 
-nav, section.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.featured-movies {
     margin-top: 20px;
+    text-align: center;
 }
 
-#city-input, #searchBar {
-    padding: 8px;
-    width: 300px;
-    margin-bottom: 10px;
-    margin-left: auto;
+.movie-card {
+    min-width: 700px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-gap: 20px; /* Adjust the gap between cards as needed */
+    margin-left: 130px;
+    margin-right: -40px;
+}
+
+.movie-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 10px; /* Adjust the margin-top value */
+    margin-bottom: 20px; /* Adjust the margin-bottom value */
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#movieCarousel {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap; /* Show only one item at a time */
+    overflow: hidden; /* Hide overflowing items */
+}
+
+.movie-carousel {
+    transition: transform 0.5s ease;
+    flex: 0 0 auto; /* Ensure each item has a fixed size */
+    min-width: 100%; /* Each item takes the full width of the container */
+}
+
+
+
+
 
 button {
-    padding: 8px;
-    background-color: rgb(79, 158, 248); /* Green color, change it to your desired color */
-    color: white; /* Text color, you can adjust this based on your background color */
+    background-color: rgb(79, 158, 248);
+    color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
+#movieModal.open {
+    position: fixed;
+    top: 38%;
+    left: 40px;
+    transform: translate(0, -40%);
+    z-index: 100;
+    max-width: 400px;
+}
+
+#modalContent {
+    width: 300px;
+    padding: 20px;
+    font-size: 16px;
+}
+
+#modalTitle {
+    font-size: 30px;
+}
+
+#modalOverview {
+    font-size: 20px;
+}
+
+#modalReleaseDate {
+    font-size: 16px;
+}
+
 .main-heading {
     color: #333;
     margin-bottom: 5px;
-}
-
-.product-card {
-    background-color: #fefefe;
-    border: 1px solid #e6e6e6;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
 }
 
 .product-card-thumbnail {
@@ -99,84 +181,12 @@ button {
     width: 25px;
 }
 
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 70px;
-    margin-right: -40px;
-}
-
-.movie-card {
-    min-width: 700px;
-    box-sizing: border-box;
-    text-align: center;
-    overflow: hidden;
-}
-
-.movie-carousel-container {
-    position: relative;
-    width: 600px;
-    margin: 20px auto;
-    overflow: hidden;
-}
-
-.product-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.product-card1 {
-    margin-left: 30px;
-    width: 200px;
-    margin-top: 10px;
-}
-
-#movieCarousel {
-    width: 100%;
-    display: flex;
-}
-
-.movie-carousel {
-    transition: transform 0.5s ease;
-}
-
-#movieModal.open {
-    position: fixed;
-    top: 38%;
-    left: 40px;
-    transform: translate(0, -40%);
-    z-index: 100;
-    max-width: 400px;
-}
-
-#modalContent {
-    width: 300px;
-    padding: 20px;
-    font-size: 16px;
-}
-
-#modalTitle {
-    font-size: 30px;
-}
-
-#modalOverview {
-    font-size: 20px;
-}
-
-#modalReleaseDate {
-    font-size: 16px;
-}
-
 @media only screen and (max-width: 600px) {
     body {
         font-size: 14px;
     }
 
-    .container {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
+   
+
+    /* Add more responsive styles as needed */
 }
