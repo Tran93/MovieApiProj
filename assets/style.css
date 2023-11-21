@@ -1,5 +1,4 @@
 body {
-    
     font-family: 'Arial', sans-serif;
     font-size: 16px;
     display: flex;
@@ -17,21 +16,17 @@ nav {
 }
 
 .search-section {
-    margin-top: 10px; /* Adjust the margin-top value as needed */
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-#city-input,
 #searchBar {
     margin-right: 10px;
-    padding: 10px; /* Adjust the padding value for consistency */
+    padding: 10px;
 }
-
-#city-search-button,
 #searchButton {
-    margin-top: 10px; /* Adjust the margin-top value as needed */
+    margin-top: 10px;
     padding: 10px;
 }
 
@@ -42,6 +37,12 @@ nav {
     text-align: center;
     width: 100%;
     margin: 0;
+}
+
+section.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .featured-movies {
@@ -58,18 +59,18 @@ nav {
 
 .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    grid-gap: 20px; /* Adjust the gap between cards as needed */
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
     margin-left: 130px;
     margin-right: -40px;
 }
 
 .movie-carousel-container {
-    position: relative;
+    position: absolute;
     width: 100%;
     max-width: 600px;
-    margin-top: 10px; /* Adjust the margin-top value */
-    margin-bottom: 20px; /* Adjust the margin-bottom value */
+    margin-top: 300px;
+    margin-bottom: 20px;
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
@@ -78,19 +79,15 @@ nav {
 #movieCarousel {
     width: 100%;
     display: flex;
-    flex-wrap: nowrap; /* Show only one item at a time */
-    overflow: hidden; /* Hide overflowing items */
+    flex-wrap: nowrap;
+    overflow: hidden;
 }
 
 .movie-carousel {
     transition: transform 0.5s ease;
-    flex: 0 0 auto; /* Ensure each item has a fixed size */
-    min-width: 100%; /* Each item takes the full width of the container */
+    flex: 0 0 auto;
+    min-width: 100%;
 }
-
-
-
-
 
 button {
     background-color: rgb(79, 158, 248);
@@ -104,7 +101,8 @@ button {
 #movieModal.open {
     position: fixed;
     top: 38%;
-    left: 40px;
+    left: auto; /* Set left to 'auto' to allow right positioning */
+    right: 40px; /* Adjust the right position as needed */
     transform: translate(0, -40%);
     z-index: 100;
     max-width: 400px;
@@ -132,10 +130,24 @@ button {
     color: #333;
     margin-bottom: 5px;
 }
+.yt-container {
+    max-width: 100px; /* Adjust the max-width as needed */
+    margin-left: 20px; /* Adjust the left margin as needed */
+    margin-right: auto;
+}
+.product-card {
+    background-color: #fefefe;
+    border: 1px solid #e6e6e6;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    object-fit: contain;
+}
 
 .product-card-thumbnail {
     display: block;
     position: relative;
+    object-fit: contain;
 }
 
 .product-card-title {
@@ -152,14 +164,16 @@ button {
     display: block;
     font-family: 'Open sans', sans-serif;
     font-size: 0.85rem;
+    white-space: wrap;
 }
 
-.product-card-price {
+.product-card-rating {
     color: #3e3e3e;
     display: inline-block;
     font-size: 0.85rem;
     font-weight: 600;
     margin-top: 0.8rem;
+    text-align: left;
 }
 
 .product-card-sale {
@@ -167,7 +181,6 @@ button {
     display: inline-block;
     font-size: 0.85rem;
     margin-left: 0.3rem;
-    text-decoration: line-through;
 }
 
 .product-card-colors {
@@ -179,14 +192,45 @@ button {
     display: inline-block;
     height: 25px;
     width: 25px;
+    object-fit: contain;
+}
+
+.material-symbols-outlined {
+    color: red;
+}
+
+#movie-details-container {
+    align-items: flex-start;
+    padding-top: 40%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    max-width: 50%;
+    display: block;
+    margin-right: auto;
+}
+
+#movie-details-container h2 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#movie-details-container div {
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+#movie-details-container::-webkit-scrollbar {
+    display: none;
 }
 
 @media only screen and (max-width: 600px) {
     body {
         font-size: 14px;
     }
-
-   
 
     /* Add more responsive styles as needed */
 }

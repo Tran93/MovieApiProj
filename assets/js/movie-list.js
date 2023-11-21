@@ -7,25 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
-  let currentPage = 1;
+  let currentSlide = 0;
+  let maxPages; // Variable to store the maximum number of pages
   const movieCarousel = document.getElementById('movieCarousel');
   const searchBar = document.getElementById('searchBar');
 
   // Fetch and display the initial set of movies
-  fetchAndDisplayMoviesWithDelay(currentPage);
+  fetchAndDisplayMoviesWithDelay(currentSlide);
 
   // Set up an interval to fetch and display movies every 5 seconds (adjust the duration as needed)
   setInterval(() => {
-    currentPage++;
-    fetchAndDisplayMoviesWithDelay(currentPage);
+    currentSlide++;
+    fetchAndDisplayMoviesWithDelay(currentSlide);
 
-    // Check if it reaches the end of the movie list and reset to the first page
-    if (currentPage === maxPages) {
-      currentPage = 1;
+    // Check if it reaches the end of the movie list and reset to the first slide
+    if (currentSlide === maxPages) {
+      currentSlide = 0;
     }
-  }, 10000);
-
-  let maxPages; // Variable to store the maximum number of pages
+  }, 5000); // Changed from 10000 to 5000 for testing, adjust as needed
 
   // Move the delay function declaration outside of the fetchAndDisplayMoviesWithDelay function
   function delay(ms) {
@@ -37,23 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchTerm.trim() !== '') {
       await searchMovies(searchTerm);
     } else {
-    
       fetchAndDisplayMoviesWithDelay(1);
     }
   });
 
-  async function fetchAndDisplayMoviesWithDelay(page) {
+  async function fetchAndDisplayMoviesWithDelay(slideIndex) {
     try {
       const authToken = options.headers.Authorization.split(' ')[1];
       let apiUrl;
 
-     
-      if (page === 1) {
-        apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=${page}`;
+      if (slideIndex === 0) {
+        apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=1`;
       } else {
         const searchTerm = searchBar.value;
         if (!searchTerm) {
-          apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=${page}`;
+          apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=${slideIndex + 1}`;
         } else {
           apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${authToken}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
         }
@@ -66,10 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const data = await response.json();
-      const movies = data.results;
 
       // Set maxPages when fetching for the first time
-      if (page === 1) {
+      if (slideIndex === 0) {
         maxPages = data.total_pages;
       }
 
@@ -78,6 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Clear existing content in the movieCarousel
       movieCarousel.innerHTML = '';
+
+      const movies = data.results;
 
       movies.forEach(movie => {
         const movieCard = createMovieCard(movie);
@@ -89,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
           fetchMovieDetails(movie.id);
         });
       });
+
+      // Show the current slide after fetching movies
+      showSlide(currentSlide);
     } catch (error) {
       console.error(`Error fetching movies: ${error.message}`);
     }
@@ -118,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return movieCard;
   }
 
-  // Function to fetch detailed information about a specific movie
   async function fetchMovieDetails(movieId) {
     try {
       const authToken = options.headers.Authorization.split(' ')[1];
@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Example function to display movie details (replace this with your implementation)
   function displayMovieDetails(details) {
     // Get references to modal elements
     const modal = document.getElementById('movieModal');
@@ -170,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Function to close the modal
   function closeModal() {
     const modal = document.getElementById('movieModal');
     if (modal) {
@@ -180,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Close the modal if the user clicks outside of it
   window.onclick = function(event) {
     const modal = document.getElementById('movieModal');
     if (modal && event.target === modal) {
@@ -188,47 +185,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Function to show slide
-  function showSlide(event) {
-    // Your carousel logic here
-
-    // Prevent the default behavior of the link
-    event.preventDefault();
-    return false;
-  }
-
-  // Function to handle movie search
-  async function searchMovies(searchTerm) {
-    try {
-      const authToken = options.headers.Authorization.split(' ')[1];
-      // Fetch and display search results
-      const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${authToken}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
-
-      const response = await fetch(apiUrl, options);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const movies = data.results;
-
-      // Rest of your code for processing the movies...
-      // Clear existing content in the movieCarousel
-      movieCarousel.innerHTML = '';
-
-      movies.forEach(movie => {
-        const movieCard = createMovieCard(movie);
-        movieCarousel.appendChild(movieCard);
-
-        // Add click event listener to each movie card
-        movieCard.addEventListener('click', () => {
-          // Handle the click event and fetch detailed information about the clicked movie
-          fetchMovieDetails(movie.id);
-        });
-      });
-    } catch (error) {
-      console.error(`Error fetching search results: ${error.message}`);
+  function showSlide(slideIndex) {
+    // Hide all slides
+    const slides = document.getElementsByClassName('movie-card');
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = 'none';
     }
+
+    // Show the selected slide
+    slides[slideIndex].style.display = 'block';
   }
 });
