@@ -8,8 +8,8 @@ fetch('https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&play
     
     videoSection.innerHTML += `    
     <a href="https://www.youtube.com/watch?v=${el.snippet.resourceId.videoId}" class=youTube-PlayList">
-    <img src="${el.snippet.thumbnails.default.url}" />
-    <h3>${el.snippet.title}</h3> 
+    <h2>${el.snippet.title}</h2> 
+    <img src="${el.snippet.thumbnails.high.url}" />
     </a>` //youtube url attached with items 
   });
 
