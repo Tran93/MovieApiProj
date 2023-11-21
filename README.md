@@ -16,6 +16,7 @@ USE a different CSS Framework other than Bootstrap
 
 Sources: 
 https://www.w3schools.com/
+https://picnicss.com/
 
 Photos/Images: 
 https://www.themoviedb.org/?language=en-US
