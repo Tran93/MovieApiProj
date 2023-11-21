@@ -199,15 +199,15 @@ button {
     color: red;
 }
 
-#movie-details-container {
-    align-items: flex-start;
-    padding-top: 40%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    flex-wrap: wrap;
-    max-width: 50%;
-    display: block;
-    margin-right: auto;
+#movie-carousel-container {
+  align-items: flex-start;
+  padding-top: 40%; /* Adjust the padding to make room for the navbar and header */
+  overflow-x: hidden;
+  overflow-y: scroll;
+  flex-wrap: wrap; /* Wrap to the next line */
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
 }
 
 #movie-details-container h2 {
@@ -239,9 +239,6 @@ button {
     display: flex;
     flex-wrap: wrap;
   }
-}
-=======
-    display: none;
 }
 
 #addBtn {
