@@ -17,4 +17,10 @@ USE the AMC API
 USE the MOVIEDB API
 USE a different CSS Framework other than Bootstrap
 
-```
+Sources: 
+https://www.w3schools.com/
+
+Photos/Images: 
+https://www.themoviedb.org/?language=en-US
+https://www.imdb.com/
+https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwif_4zj-NOCAxWaHkQIHc6KATUQPAgJ
