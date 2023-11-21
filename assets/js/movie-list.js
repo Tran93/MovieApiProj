@@ -32,14 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  // Add an event listener for the "input" event on the search bar
   document.getElementById('searchButton').addEventListener('click', async () => {
-    // Fetch and display movies based on the current search term
     const searchTerm = searchBar.value;
     if (searchTerm.trim() !== '') {
       await searchMovies(searchTerm);
     } else {
-      // If the search term is empty, fetch and display upcoming movies
+    
       fetchAndDisplayMoviesWithDelay(1);
     }
   });
@@ -49,17 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const authToken = options.headers.Authorization.split(' ')[1];
       let apiUrl;
 
-      // Check if the page is for upcoming movies or search results
+     
       if (page === 1) {
         apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=${page}`;
       } else {
         const searchTerm = searchBar.value;
-
         if (!searchTerm) {
-          // If the search term is empty, fetch upcoming movies
           apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${authToken}&language=en-US&page=${page}`;
         } else {
-          // If there is a search term, fetch search results
           apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${authToken}&language=en-US&query=${searchTerm}&page=1&include_adult=false`;
         }
       }
