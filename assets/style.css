@@ -118,7 +118,7 @@ button {
   flex-wrap: wrap; /* Wrap to the next line */
   max-width: 50%;
   display: block;
-  margin-right: auto;
+  margin-left: auto;
 }
 
 #movie-details-container h2 {
