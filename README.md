@@ -1,15 +1,12 @@
 # MovieApiProj
 A group project for movies using multiple API's'
 
-# User Story
+# Description
+A group challenge that requires a deployed website which uses  two forms of API.This website uses two forms of API consisting of youtube and TMDB.
+This website displays images/url with links to the youtube Playlist and channel. It also displays a carosel with images and information about the movie as well as a 
+search bar to find specific information about it.
 
-```md
-As A user of the website I want to view movies
-I WANT see the ticket pricing and location of the theatre
-I WANT to read the ratings and reviews
-SO THAT it will be easy to find movies and the theatre
 
-```
 
 ## Requirements
 ```md
