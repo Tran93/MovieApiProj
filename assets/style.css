@@ -131,9 +131,14 @@ button {
     margin-bottom: 5px;
 }
 .yt-container {
-    max-width: 100px; /* Adjust the max-width as needed */
+    max-width: 350px; /* Adjust the max-width as needed */
     margin-left: 20px; /* Adjust the left margin as needed */
     margin-right: auto;
+    border: #3e3e3e;
+    border-style: outset;
+    text-align: center;
+    
+    
 }
 .product-card {
     background-color: #fefefe;
