@@ -222,8 +222,25 @@ button {
     margin-right: 20px;
     margin-left: 20px;
 }
-
 #movie-details-container::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+#movie-details-container img {
+  border: 0;
+  max-width: 40%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+  
+  @media screen and (max-width: 768px) {
+  body {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+=======
     display: none;
 }
 
@@ -234,3 +251,5 @@ button {
 
     /* Add more responsive styles as needed */
 }
+
+
